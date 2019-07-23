@@ -1,0 +1,89 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/home/aluno/Documentos/microarquiteturaGp3/ --output-directory=/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3/ --report-file=bsf:/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.bsf --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.qsys
+Progress: Loading microarquiteturaGp3/microarquiteturaGp3.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding buttons [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module buttons
+Progress: Adding leds_columns [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module leds_columns
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding LCD_Custom_instruction_0 [LCD_Custom_instruction 1.0]
+Progress: Parameterizing module LCD_Custom_instruction_0
+Progress: Adding leds_rows [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module leds_rows
+Progress: Adding uart_tx_0 [uart_tx 1.0]
+Progress: Parameterizing module uart_tx_0
+Progress: Adding uart_rx_0 [uart_rx 1.0]
+Progress: Parameterizing module uart_rx_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: microarquiteturaGp3.buttons: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal i_Tx_DV[1] of type dataa must have width [32]
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal i_Tx_Byte[8] of type datab must have width [32]
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal o_Tx_Active[1] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal o_Rx_DV[1] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal o_Rx_Byte[8] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal result appears 2 times (only once is allowed)
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/home/aluno/Documentos/microarquiteturaGp3/ --output-directory=/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.sopcinfo --report-file=html:/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.html --report-file=qip:/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3/synthesis/microarquiteturaGp3.qip --report-file=cmp:/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=/home/aluno/Documentos/microarquiteturaGp3/microarquiteturaGp3.qsys --language=VERILOG
+Progress: Loading microarquiteturaGp3/microarquiteturaGp3.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2_qsys_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding buttons [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module buttons
+Progress: Adding leds_columns [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module leds_columns
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding LCD_Custom_instruction_0 [LCD_Custom_instruction 1.0]
+Progress: Parameterizing module LCD_Custom_instruction_0
+Progress: Adding leds_rows [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module leds_rows
+Progress: Adding uart_tx_0 [uart_tx 1.0]
+Progress: Parameterizing module uart_tx_0
+Progress: Adding uart_rx_0 [uart_rx 1.0]
+Progress: Parameterizing module uart_rx_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: microarquiteturaGp3.buttons: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal i_Tx_DV[1] of type dataa must have width [32]
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal i_Tx_Byte[8] of type datab must have width [32]
+Warning: microarquiteturaGp3.uart_tx_0.nios_custom_instruction_slave: Signal o_Tx_Active[1] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal o_Rx_DV[1] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal o_Rx_Byte[8] of type result must have width [32]
+Warning: microarquiteturaGp3.uart_rx_0.nios_custom_instruction_slave: Signal result appears 2 times (only once is allowed)
+Info: microarquiteturaGp3: Generating microarquiteturaGp3 "microarquiteturaGp3" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 10 modules, 34 connections
+Info: merlin_custom_instruction_transform: After transform: 15 modules, 39 connections
+Info: merlin_translator_transform: After transform: 23 modules, 71 connections
+Info: merlin_domain_transform: After transform: 38 modules, 167 connections
+Info: merlin_router_transform: After transform: 46 modules, 199 connections
+Info: reset_adaptation_transform: After transform: 47 modules, 158 connections
+Info: merlin_network_to_switch_transform: After transform: 62 modules, 198 connections
+Info: merlin_mm_transform: After transform: 62 modules, 198 connections
+Info: merlin_interrupt_mapper_transform: After transform: 63 modules, 201 connections
+Warning: microarquiteturaGp3: "No matching role found for nios2_qsys_0_custom_instruction_master_multi_xconnect:ci_slave:ci_slave_ipending (ipending)"
+Warning: microarquiteturaGp3: "No matching role found for nios2_qsys_0_custom_instruction_master_multi_xconnect:ci_slave:ci_slave_estatus (estatus)"
+Error: microarquiteturaGp3: More than one port in uart_rx_0:nios_custom_instruction_slave has role result
+Info: microarquiteturaGp3: Done microarquiteturaGp3" with 1 modules, 0 files, 0 bytes
+Error: ip-generate failed with exit code 1: 1 Error, 8 Warnings
+Info: Finished: Create HDL design files for synthesis
