@@ -595,9 +595,9 @@ module microarquiteturaGp3_nios2_qsys_0_nios2_avalon_reg (
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          oci_ienable <= 32'b00000000000000000000000000000001;
+          oci_ienable <= 32'b00000000000000000000000000000011;
       else if (take_action_oci_intr_mask_reg)
-          oci_ienable <= writedata | ~(32'b00000000000000000000000000000001);
+          oci_ienable <= writedata | ~(32'b00000000000000000000000000000011);
     end
 
 
@@ -3411,8 +3411,6 @@ module microarquiteturaGp3_nios2_qsys_0 (
   wire             D_op_sub;
   wire             D_op_sync;
   wire             D_op_trap;
-  wire             D_op_uart_rx_0;
-  wire             D_op_uart_tx_0;
   wire             D_op_wrctl;
   wire             D_op_wrprs;
   wire             D_op_xor;
@@ -3627,8 +3625,6 @@ module microarquiteturaGp3_nios2_qsys_0 (
   wire             F_op_sub;
   wire             F_op_sync;
   wire             F_op_trap;
-  wire             F_op_uart_rx_0;
-  wire             F_op_uart_tx_0;
   wire             F_op_wrctl;
   wire             F_op_wrprs;
   wire             F_op_xor;
@@ -3818,7 +3814,6 @@ module microarquiteturaGp3_nios2_qsys_0 (
   microarquiteturaGp3_nios2_qsys_0_test_bench the_microarquiteturaGp3_nios2_qsys_0_test_bench
     (
       .D_iw                          (D_iw),
-      .D_iw_custom_n                 (D_iw_custom_n),
       .D_iw_op                       (D_iw_op),
       .D_iw_opx                      (D_iw_opx),
       .D_valid                       (D_valid),
@@ -4031,9 +4026,7 @@ module microarquiteturaGp3_nios2_qsys_0 (
   assign F_op_rsvx56 = F_op_opx & (F_iw_opx == 56);
   assign F_op_rsvx60 = F_op_opx & (F_iw_opx == 60);
   assign F_op_rsvx63 = F_op_opx & (F_iw_opx == 63);
-  assign F_op_lcd_custom_instruction_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h0);
-  assign F_op_uart_rx_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h2);
-  assign F_op_uart_tx_0 = F_op_custom & ({F_iw_custom_n[1 : 0]} == 2'h1);
+  assign F_op_lcd_custom_instruction_0 = F_op_custom & 1'b1;
   assign F_op_opx = F_iw_op == 58;
   assign F_op_custom = F_iw_op == 50;
   assign D_op_call = D_iw_op == 0;
@@ -4162,9 +4155,7 @@ module microarquiteturaGp3_nios2_qsys_0 (
   assign D_op_rsvx56 = D_op_opx & (D_iw_opx == 56);
   assign D_op_rsvx60 = D_op_opx & (D_iw_opx == 60);
   assign D_op_rsvx63 = D_op_opx & (D_iw_opx == 63);
-  assign D_op_lcd_custom_instruction_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h0);
-  assign D_op_uart_rx_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h2);
-  assign D_op_uart_tx_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h1);
+  assign D_op_lcd_custom_instruction_0 = D_op_custom & 1'b1;
   assign D_op_opx = D_iw_op == 58;
   assign D_op_custom = D_iw_op == 50;
   assign R_en = 1'b1;
@@ -4183,7 +4174,7 @@ module microarquiteturaGp3_nios2_qsys_0 (
   assign E_ci_multi_clock = clk;
   assign E_ci_multi_reset = ~reset_n;
   //custom_instruction_master, which is an e_custom_instruction_master
-  assign iactive = d_irq[31 : 0] & 32'b00000000000000000000000000000001;
+  assign iactive = d_irq[31 : 0] & 32'b00000000000000000000000000000011;
   assign F_pc_sel_nxt = R_ctrl_exception                          ? 2'b00 :
     R_ctrl_break                              ? 2'b01 :
     (W_br_taken | R_ctrl_uncond_cti_non_br)   ? 2'b10 :
@@ -4808,9 +4799,9 @@ defparam microarquiteturaGp3_nios2_qsys_0_register_bank_b.lpm_file = "microarqui
 
   assign W_bstatus_reg_nxt = E_valid ? W_bstatus_reg_inst_nxt : W_bstatus_reg;
   assign W_ienable_reg_nxt = ((E_wrctl_ienable & E_valid) ? 
-    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000000001;
+    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000000011;
 
-  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000000001;
+  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000000011;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
@@ -4855,7 +4846,7 @@ defparam microarquiteturaGp3_nios2_qsys_0_register_bank_b.lpm_file = "microarqui
   //jtag_debug_module, which is an e_avalon_slave
   assign jtag_debug_module_clk = clk;
   assign jtag_debug_module_reset = ~reset_n;
-  assign D_ctrl_custom = D_op_lcd_custom_instruction_0|D_op_uart_rx_0|D_op_uart_tx_0;
+  assign D_ctrl_custom = D_op_lcd_custom_instruction_0;
   assign R_ctrl_custom_nxt = D_ctrl_custom;
   always @(posedge clk or negedge reset_n)
     begin
@@ -4866,7 +4857,7 @@ defparam microarquiteturaGp3_nios2_qsys_0_register_bank_b.lpm_file = "microarqui
     end
 
 
-  assign D_ctrl_custom_multi = D_op_lcd_custom_instruction_0|D_op_uart_rx_0|D_op_uart_tx_0;
+  assign D_ctrl_custom_multi = D_op_lcd_custom_instruction_0;
   assign R_ctrl_custom_multi_nxt = D_ctrl_custom_multi;
   always @(posedge clk or negedge reset_n)
     begin
@@ -5664,8 +5655,6 @@ defparam microarquiteturaGp3_nios2_qsys_0_register_bank_b.lpm_file = "microarqui
     (F_op_sra)? 192'h202020202020202020202020202020202020202020737261 :
     (F_op_intr)? 192'h2020202020202020202020202020202020202020696e7472 :
     (F_op_lcd_custom_instruction_0)? 192'h6c63645f637573746f6d5f696e737472756374696f6e5f30 :
-    (F_op_uart_rx_0)? 192'h202020202020202020202020202020756172745f72785f30 :
-    (F_op_uart_tx_0)? 192'h202020202020202020202020202020756172745f74785f30 :
     192'h202020202020202020202020202020202020202020424144;
 
   assign D_inst = (D_op_call)? 192'h202020202020202020202020202020202020202063616c6c :
@@ -5755,8 +5744,6 @@ defparam microarquiteturaGp3_nios2_qsys_0_register_bank_b.lpm_file = "microarqui
     (D_op_sra)? 192'h202020202020202020202020202020202020202020737261 :
     (D_op_intr)? 192'h2020202020202020202020202020202020202020696e7472 :
     (D_op_lcd_custom_instruction_0)? 192'h6c63645f637573746f6d5f696e737472756374696f6e5f30 :
-    (D_op_uart_rx_0)? 192'h202020202020202020202020202020756172745f72785f30 :
-    (D_op_uart_tx_0)? 192'h202020202020202020202020202020756172745f74785f30 :
     192'h202020202020202020202020202020202020202020424144;
 
   assign F_vinst = F_valid ? F_inst : {24{8'h2d}};

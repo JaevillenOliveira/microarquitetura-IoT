@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="127" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="272" />
+   <clocksource preferredWidth="271" />
+   <frequency preferredWidth="256" />
+  </columns>
+ </clocktable>
+ <library
+   expandedCategories="Library,Library/University Program,Library/Interface Protocols/Serial,Library/Interface Protocols,Project,Library/University Program/Communications" />
+ <window width="1208" height="694" x="0" y="0" />
+ <hdlexample language="VERILOG" />
+</preferences>

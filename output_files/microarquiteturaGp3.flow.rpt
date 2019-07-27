@@ -1,5 +1,5 @@
 Flow report for microarquiteturaGp3
-Mon Jul 22 09:13:56 2019
+Thu Jul 25 15:51:50 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,20 +40,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Jul 22 09:13:56 2019           ;
+; Flow Status                        ; Successful - Thu Jul 25 15:51:49 2019           ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; microarquiteturaGp3                             ;
 ; Top-level Entity Name              ; microarquiteturaGp3                             ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE30F23C7                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1,826 / 28,848 ( 6 % )                          ;
-;     Total combinational functions  ; 1,730 / 28,848 ( 6 % )                          ;
-;     Dedicated logic registers      ; 1,001 / 28,848 ( 3 % )                          ;
-; Total registers                    ; 1001                                            ;
-; Total pins                         ; 30 / 329 ( 9 % )                                ;
+; Total logic elements               ; 2,142 / 28,848 ( 7 % )                          ;
+;     Total combinational functions  ; 2,035 / 28,848 ( 7 % )                          ;
+;     Dedicated logic registers      ; 1,183 / 28,848 ( 4 % )                          ;
+; Total registers                    ; 1183                                            ;
+; Total pins                         ; 32 / 329 ( 10 % )                               ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 44,032 / 608,256 ( 7 % )                        ;
+; Total memory bits                  ; 46,080 / 608,256 ( 8 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                                 ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 +------------------------------------+-------------------------------------------------+
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/22/2019 09:11:05 ;
+; Start date & time ; 07/25/2019 15:48:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; microarquiteturaGp3 ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-----------------------------------------------------------------------+---------------+---------------------------------------------------------------------------+----------------+
 ; Assignment Name                     ; Value                                                                 ; Default Value ; Entity Name                                                               ; Section Id     ;
 +-------------------------------------+-----------------------------------------------------------------------+---------------+---------------------------------------------------------------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 105425943462.156379746403027                                          ; --            ; --                                                                        ; --             ;
+; COMPILER_SIGNATURE_ID               ; 105425942609.156408049805530                                          ; --            ; --                                                                        ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                                  ; --            ; --                                                                        ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                                ; <None>        ; --                                                                        ; --             ;
 ; IP_TOOL_ENV                         ; Qsys                                                                  ; --            ; altera_avalon_sc_fifo                                                     ; --             ;
@@ -158,7 +158,7 @@ applicable agreement for further details.
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                   ; --            ; --                                                                        ; --             ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                 ; --            ; --                                                                        ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                          ; --            ; --                                                                        ; --             ;
-; SLD_INFO                            ; QSYS_NAME microarquiteturaGp3 HAS_SOPCINFO 1 GENERATION_ID 1563222978 ; --            ; --                                                                        ; --             ;
+; SLD_INFO                            ; QSYS_NAME microarquiteturaGp3 HAS_SOPCINFO 1 GENERATION_ID 1564056533 ; --            ; --                                                                        ; --             ;
 ; SOPCINFO_FILE                       ; microarquiteturaGp3/synthesis/../../microarquiteturaGp3.sopcinfo      ; --            ; --                                                                        ; --             ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                                    ; --            ; --                                                                        ; --             ;
 +-------------------------------------+-----------------------------------------------------------------------+---------------+---------------------------------------------------------------------------+----------------+
@@ -169,12 +169,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:45     ; 1.0                     ; 402 MB              ; 00:00:36                           ;
-; Fitter                    ; 00:01:01     ; 1.0                     ; 574 MB              ; 00:00:58                           ;
-; Assembler                 ; 00:00:09     ; 1.0                     ; 341 MB              ; 00:00:08                           ;
-; TimeQuest Timing Analyzer ; 00:00:12     ; 1.0                     ; 396 MB              ; 00:00:11                           ;
-; EDA Netlist Writer        ; 00:00:11     ; 1.0                     ; 336 MB              ; 00:00:10                           ;
-; Total                     ; 00:02:18     ; --                      ; --                  ; 00:02:03                           ;
+; Analysis & Synthesis      ; 00:00:36     ; 1.0                     ; 422 MB              ; 00:00:36                           ;
+; Fitter                    ; 00:00:55     ; 1.2                     ; 608 MB              ; 00:01:03                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 349 MB              ; 00:00:09                           ;
+; TimeQuest Timing Analyzer ; 00:00:12     ; 1.2                     ; 416 MB              ; 00:00:12                           ;
+; EDA Netlist Writer        ; 00:00:11     ; 1.0                     ; 344 MB              ; 00:00:12                           ;
+; Total                     ; 00:02:03     ; --                      ; --                  ; 00:02:12                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -183,11 +183,11 @@ applicable agreement for further details.
 +---------------------------+------------------+------------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
 +---------------------------+------------------+------------------+------------+----------------+
-; Analysis & Synthesis      ; LabHard-25089    ; Debian GNU/Linux ; 7          ; i686           ;
-; Fitter                    ; LabHard-25089    ; Debian GNU/Linux ; 7          ; i686           ;
-; Assembler                 ; LabHard-25089    ; Debian GNU/Linux ; 7          ; i686           ;
-; TimeQuest Timing Analyzer ; LabHard-25089    ; Debian GNU/Linux ; 7          ; i686           ;
-; EDA Netlist Writer        ; LabHard-25089    ; Debian GNU/Linux ; 7          ; i686           ;
+; Analysis & Synthesis      ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; Fitter                    ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; Assembler                 ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; TimeQuest Timing Analyzer ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
+; EDA Netlist Writer        ; LabHard-25153    ; Debian GNU/Linux ; 7          ; i686           ;
 +---------------------------+------------------+------------------+------------+----------------+
 
 

@@ -21,7 +21,6 @@
 module microarquiteturaGp3_nios2_qsys_0_test_bench (
                                                      // inputs:
                                                       D_iw,
-                                                      D_iw_custom_n,
                                                       D_iw_op,
                                                       D_iw_opx,
                                                       D_valid,
@@ -58,7 +57,6 @@ module microarquiteturaGp3_nios2_qsys_0_test_bench (
   output           d_write;
   output           test_has_ended;
   input   [ 31: 0] D_iw;
-  input   [  7: 0] D_iw_custom_n;
   input   [  5: 0] D_iw_op;
   input   [  5: 0] D_iw_opx;
   input            D_valid;
@@ -208,8 +206,6 @@ module microarquiteturaGp3_nios2_qsys_0_test_bench (
   wire             D_op_sub;
   wire             D_op_sync;
   wire             D_op_trap;
-  wire             D_op_uart_rx_0;
-  wire             D_op_uart_tx_0;
   wire             D_op_wrctl;
   wire             D_op_wrprs;
   wire             D_op_xor;
@@ -376,9 +372,7 @@ module microarquiteturaGp3_nios2_qsys_0_test_bench (
   assign D_op_rsvx56 = D_op_opx & (D_iw_opx == 56);
   assign D_op_rsvx60 = D_op_opx & (D_iw_opx == 60);
   assign D_op_rsvx63 = D_op_opx & (D_iw_opx == 63);
-  assign D_op_lcd_custom_instruction_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h0);
-  assign D_op_uart_rx_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h2);
-  assign D_op_uart_tx_0 = D_op_custom & ({D_iw_custom_n[1 : 0]} == 2'h1);
+  assign D_op_lcd_custom_instruction_0 = D_op_custom & 1'b1;
   assign D_op_opx = D_iw_op == 58;
   assign D_op_custom = D_iw_op == 50;
   always @(posedge clk or negedge reset_n)

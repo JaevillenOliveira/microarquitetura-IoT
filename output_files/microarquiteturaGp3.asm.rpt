@@ -1,5 +1,5 @@
 Assembler report for microarquiteturaGp3
-Mon Jul 22 09:13:21 2019
+Thu Jul 25 15:50:43 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Jul 22 09:13:21 2019 ;
+; Assembler Status      ; Successful - Thu Jul 25 15:50:43 2019 ;
 ; Revision Name         ; microarquiteturaGp3                   ;
 ; Top-level Entity Name ; microarquiteturaGp3                   ;
 ; Family                ; Cyclone IV E                          ;
@@ -103,8 +103,8 @@ applicable agreement for further details.
 ; Option         ; Setting                          ;
 +----------------+----------------------------------+
 ; Device         ; EP4CE30F23C7                     ;
-; JTAG usercode  ; 0x0034EF40                       ;
-; Checksum       ; 0x0034EF40                       ;
+; JTAG usercode  ; 0x00379D9F                       ;
+; Checksum       ; 0x00379D9F                       ;
 +----------------+----------------------------------+
 
 
@@ -114,14 +114,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Jul 22 09:13:12 2019
+    Info: Processing started: Thu Jul 25 15:50:34 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off microarquiteturaGp3 -c microarquiteturaGp3
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 341 megabytes
-    Info: Processing ended: Mon Jul 22 09:13:21 2019
+    Info: Peak virtual memory: 349 megabytes
+    Info: Processing ended: Thu Jul 25 15:50:43 2019
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Total CPU time (on all processors): 00:00:09
 
 

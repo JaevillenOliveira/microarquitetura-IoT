@@ -9,8 +9,8 @@
 			lcd_enable_op       : out std_logic;                                       -- enable_op
 			lcd_data_out        : out std_logic_vector(7 downto 0);                    -- data_out
 			rows_export         : out std_logic_vector(7 downto 0);                    -- export
-			tx_o_tx_serial      : out std_logic;                                       -- o_tx_serial
-			rx_rx_serial        : in  std_logic                    := 'X'              -- rx_serial
+			uart_RXD            : in  std_logic                    := 'X';             -- RXD
+			uart_TXD            : out std_logic                                        -- TXD
 		);
 	end component microarquiteturaGp3;
 

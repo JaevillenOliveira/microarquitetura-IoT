@@ -2,7 +2,7 @@ set_global_assignment -entity "microarquiteturaGp3" -library "microarquiteturaGp
 set_global_assignment -entity "microarquiteturaGp3" -library "microarquiteturaGp3" -name IP_TOOL_VERSION "13.0sp1"
 set_global_assignment -entity "microarquiteturaGp3" -library "microarquiteturaGp3" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "microarquiteturaGp3" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../microarquiteturaGp3.sopcinfo"]
-set_instance_assignment -entity "microarquiteturaGp3" -library "microarquiteturaGp3" -name SLD_INFO "QSYS_NAME microarquiteturaGp3 HAS_SOPCINFO 1 GENERATION_ID 1563802627"
+set_instance_assignment -entity "microarquiteturaGp3" -library "microarquiteturaGp3" -name SLD_INFO "QSYS_NAME microarquiteturaGp3 HAS_SOPCINFO 1 GENERATION_ID 1564056533"
 set_global_assignment -library "microarquiteturaGp3" -name MISC_FILE [file join $::quartus(qip_path) "../../microarquiteturaGp3.cmp"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "microarquiteturaGp3" -name MISC_FILE [file join $::quartus(qip_path) "../../microarquiteturaGp3.qsys"]
@@ -28,8 +28,11 @@ set_global_assignment -library "microarquiteturaGp3" -name SYSTEMVERILOG_FILE [f
 set_global_assignment -library "microarquiteturaGp3" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_customins_slave_translator.sv"]
 set_global_assignment -library "microarquiteturaGp3" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/microarquiteturaGp3_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv"]
 set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_customins_master_translator.v"]
-set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/uart_rx.v"]
-set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/uart_tx.v"]
+set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_rs232_counters.v"]
+set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_rs232_in_deserializer.v"]
+set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_rs232_out_serializer.v"]
+set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_sync_fifo.v"]
+set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/microarquiteturaGp3_rs232_0.v"]
 set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/microarquiteturaGp3_leds_rows.v"]
 set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/init_lcd.v"]
 set_global_assignment -library "microarquiteturaGp3" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/microarquiteturaGp3_jtag_uart_0.v"]
