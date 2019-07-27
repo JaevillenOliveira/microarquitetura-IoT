@@ -83,32 +83,6 @@ _start:
 	movia r13, 0x2010 # endereço de memória das linhas
 	movia r15, 0x2030 # endereço de memória da uart
 
-
-loop_write_uart:
-	add r3, r7, r12
-	ldb r11, 0(r3)
-	stbio r11, 0(r15)
-	addi r12, r12, 1
-	bgt r12, r10, loop_write_uart_next_destine
-	br loop_write_uart	
-
-loop_write_uart_end:
-	add r3, r7, r12
-	ldb r11, 0(r3)
-	stbio r11, 0(r15)
-	addi r12, r12, 1
-	bgt r12, r10, loop_write_uart_next_destine_end
-	br loop_write_uart_end
-
-loop_write_uart_next_destine:
-	callr r8
-
-loop_write_uart_next_destine_end:
-	movia r11, aspas
-	stbio r11, 0(r15)
-	call end_command
-	callr r8
-
 send_at1:
 	movia r7, at1
 	addi r10, r0, 13
@@ -218,6 +192,31 @@ send_mqtt:
 	addi sp, sp, 4
 	ret
 
+loop_write_uart:
+	add r3, r7, r12
+	ldb r11, 0(r3)
+	stbio r11, 0(r15)
+	addi r12, r12, 1
+	bgt r12, r10, loop_write_uart_next_destine
+	br loop_write_uart	
+
+loop_write_uart_end:
+	add r3, r7, r12
+	ldb r11, 0(r3)
+	stbio r11, 0(r15)
+	addi r12, r12, 1
+	bgt r12, r10, loop_write_uart_next_destine_end
+	br loop_write_uart_end
+
+loop_write_uart_next_destine:
+	callr r8
+
+loop_write_uart_next_destine_end:
+	movia r11, aspas
+	stbio r11, 0(r15)
+	call end_command
+	callr r8
+
 end_command:
 	movia r11, treze
 	stbio r11, 0(r15)
@@ -240,7 +239,6 @@ clear_uart:
 	ldb r3, 0(r15)
 	bne r3, r0, clear_uart
 	ret
-
 
 init_lcd:
 	movia r3, 0x30
