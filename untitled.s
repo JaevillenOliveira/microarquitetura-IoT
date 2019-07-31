@@ -30,6 +30,27 @@
 .equ msb, 0x00
 .equ lsb, 0x07
 
+at1: .ascii "AT"
+
+at2: .ascii "AT+RST"
+
+at3: .ascii "AT+CWMODE_CUR=1"
+
+at4: .ascii "AT+CIPMUX=0"
+
+at5: .ascii "AT+CWJAP_CUR="
+at5_p1: .ascii "ABCDEABCD"
+at5_p2: .ascii "HelloWorldMP31"
+
+at6: .ascii "AT+CIPSTART="
+at6_p1: .ascii "TCP"
+at6_p2: .ascii "192.168.43.39"
+at6_p3: .ascii "1883"
+
+at7: .ascii "AT+CIPSEND=15"
+at8: .ascii "AT+CIPSEND=17"
+topico: .ascii "SDTopic"
+
 .text
 
 # r2 guarda recebe os resultados da intrução customizada do lcd
@@ -112,10 +133,6 @@ send_AT:
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3
 
-	call read_from_uart
-	custom 0, r2, r14, r3
-
-
 send_AT_RST:
 	movia r11, 0x41
 	stwio r11, 0(r15)
@@ -152,10 +169,6 @@ send_AT_RST:
 	call delay
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3	
-
-	call read_from_uart
-	custom 0, r2, r14, r3
-
 
 send_AT_CWMODE:
 	movia r11, 0x41
@@ -230,10 +243,6 @@ send_AT_CWMODE:
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3	
 
-	call read_from_uart
-	custom 0, r2, r14, r3
-
-
 send_AT_CIPMUX:
 	movia r11, 0x41
 	stwio r11, 0(r15)
@@ -290,10 +299,6 @@ send_AT_CIPMUX:
 	call delay
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3	
-
-	call read_from_uart
-	custom 0, r2, r14, r3
-
 
 send_AT_CWJAP:
 	movia r11, 0x41
@@ -408,491 +413,285 @@ send_AT_CWJAP:
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3	
 
+# send_at1:
+# 	movia r7, at3
+# 	addi r10, r0, 2
+# 	add r12, r0, r0
+# 	movia r8, send_at2
+# 	call loop_write_uart_end2
+
+# send_at2:
+# 	movia r7, at3
+# 	addi r10, r0, 6
+# 	add r12, r0, r0
+# 	movia r8, send_at3
+# 	call loop_write_uart_end2
+
+# send_at3:
+# 	movia r7, at3
+# 	addi r10, r0, 15
+# 	add r12, r0, r0
+# 	movia r8, send_at4
+# 	call loop_write_uart_end2
+
+# send_at4:
+# 	movia r7, at3
+# 	addi r10, r0, 11
+# 	add r12, r0, r0
+# 	movia r8, send_at5
+# 	call loop_write_uart_end2
+
+# send_at5:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r7, at5
+# 	addi r10, r0, 13
+# 	add r12, r0, r0
+# 	movia r8, send_at5_p1
+# 	call loop_write_uart
+
+# send_at5_p1:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r7, at5_p1
+# 	addi r10, r0, 9
+# 	add r12, r0, r0
+# 	movia r8, send_at5_p2
+# 	call loop_write_uart
+
+# send_at5_p2:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r11, virgula
+# 	call write_uart	
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r7, at5_p2
+# 	addi r10, r0, 14
+# 	add r12, r0, r0
+# 	movia r8, send_at6
+# 	call loop_write_uart_end
+
+# send_at6:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r7, at6
+# 	addi r10, r0, 12
+# 	add r12, r0, r0
+# 	movia r8, send_at6_p1
+# 	call loop_write_uart
+
+# send_at6_p1:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r7, at6_p1
+# 	addi r10, r0, 3
+# 	add r12, r0, r0
+# 	movia r8, send_at6_p2
+# 	call loop_write_uart
+
+# send_at6_p2:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r11, virgula
+# 	call write_uart	
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r7, at6_p2
+# 	addi r10, r0, 13
+# 	add r12, r0, r0
+# 	movia r8, send_at6_p3
+# 	call loop_write_uart
+
+# send_at6_p3:
+# 	# movia r3, clear # Limpa o display
+# 	# custom 0, r2, r0, r3
+# 	movia r11, aspas
+# 	call write_uart	
+# 	movia r11, virgula
+# 	call write_uart	
+
+# 	movia r7, at6_p3
+# 	addi r10, r0, 4
+# 	add r12, r0, r0
+# 	movia r8, send_at8
+# 	call loop_write_uart_end2
+
+init_mqtt:
+	# movia r3, clear # Limpa o display
+	# custom 0, r2, r0, r3
+	# FIDEX HEADER
+	movia r11, 0x10 # CONNECT
+	call write_uart	
+	movia r11, 0x0F # REMAING LENGTH
+	# VARIABLE HEADER
+	call write_uart	
+	movia r11, 0x00 # MSB
+	call write_uart	
+	movia r11, 0x04 # LSB
+	call write_uart	
+	movia r11, 0x4D # M
+	call write_uart	
+	movia r11, 0x51 # Q
+	call write_uart	
+	movia r11, 0x54 # T
+	call write_uart	
+	movia r11, 0x54 # T
+	call write_uart	
+	movia r11, 0x04 # PROTOCOL LEVEL
+	call write_uart	
+	movia r11, 0x02 # FLAGS
+	call write_uart	
+	movia r11, 0x00 # KEEP ALIVE MSB
+	call write_uart	
+	movia r11, 0x0A # KEEP ALIVE LSB
+	call write_uart	
+	#PAYLOAD
+	movia r11, 0x00 #MSB
+	call write_uart	
+	movia r11, 0x03 #LSB
+	call write_uart	
+	movia r11, 0x47 #G
+	call write_uart	
+	movia r11, 0x50 #P
+	call write_uart	
+	# movia r3, clear # Limpa o display
+	# custom 0, r2, r0, r3
+	movia r11, 0x33 #3
+	call write_uart	
+
+	br led1
+
+send_at8:
+	# movia r3, clear # Limpa o display
+	# custom 0, r2, r0, r3
+	movia r7, at8
+	addi r10, r0, 13
+	add r12, r0, r0
+	movia r8, init_mqtt
+	subi sp, sp, 8
+	stw ra, 1(sp)
+	call loop_write_uart_end2
+
+send_at7:
+	# movia r3, clear # Limpa o display
+	# custom 0, r2, r0, r3
+	movia r7, at7
+	addi r10, r0, 13
+	add r12, r0, r0
+	movia r8, send_mqtt
+	subi sp, sp, 8
+	stw ra, 1(sp)
+	call loop_write_uart_end2
+
+send_mqtt:
+	# movia r3, clear # Limpa o display
+	# custom 0, r2, r0, r3
+	movia r11, publish
+	call write_uart	
+	movia r11, remain_bytes
+	call write_uart	
+	movia r11, msb
+	call write_uart	
+	movia r11, lsb
+	call write_uart	
+
+	movia r7, topico
+	addi r10, r0, 7
+	add r12, r0, r0
+	movia r8, send_mqtt2
+	call loop_write_uart
+
+
+send_mqtt2:
+	movia r11, L
+	call write_uart	
+	movia r11, E
+	call write_uart	
+	movia r11, D
+	call write_uart	
+	add r11, r0, r4
+	call write_uart	
+
+	ldw ra, 1(sp)
+	addi sp, sp, 8
+	ret 
+
+loop_write_uart:
+	add r3, r7, r12
+	ldb r11, 0(r3)
+	# stbio r11, 0(r15)
+	call write_uart
+	addi r12, r12, 1
+	bgt r12, r10, loop_write_uart_next_destine
+	br loop_write_uart	
+
+loop_write_uart_end:
+	add r3, r7, r12
+	ldb r11, 0(r3)
+	call write_uart	
+	addi r12, r12, 1
+	bgt r12, r10, loop_write_uart_next_destine_end
+	br loop_write_uart_end
+
+loop_write_uart_end2:
+	add r3, r7, r12
+	ldb r11, 0(r3)
+	call write_uart	
+	addi r12, r12, 1
+	bgt r12, r10, loop_write_uart_next_destine_end2
+	br loop_write_uart_end2
+
+loop_write_uart_next_destine:
+	callr r8
+
+loop_write_uart_next_destine_end:
+	movia r11, aspas
+	call write_uart
+	call end_command
+	callr r8
+
+loop_write_uart_next_destine_end2:
+	call end_command
+	callr r8
+
+end_command:
+
+	subi sp, sp, 8
+	stw ra, 1(sp)
+
+	movia r11, treze
+	call write_uart	
+	movia r11, dez
+	call write_uart	
+
+	addi r10, r0, 0
+	movia r11, 1200
+	call delay
+
 	call read_from_uart
 	custom 0, r2, r14, r3
 
-
-send_AT_CIPSTART:
-	movia r11, 0x41
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x54
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x2B
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x43
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x49
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x50
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x53
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x54
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x41
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x52
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x54
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x3D
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-	
-	movia r11, aspas
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x54
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x43
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x50
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, aspas
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, virgula
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, aspas
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x31
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x39
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x32
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x2E
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x31
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x36
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x38
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x2E
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Quatro
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Tres
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x2E
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Tres
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x39
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, aspas
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, virgula
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Um
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x38
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x38
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Tres
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x0D
-	stwio r11, 0(r15)
-
-	movia r11, 0x0A
-	stwio r11, 0(r15)	
-
 	addi r10, r0, 0
-	movia r11, 1000000
+	movia r11, 2000000
 	call delay
+
 	movia r3, clear # Limpa o display
 	custom 0, r2, r0, r3
 
-	call read_from_uart	
-	custom 0, r2, r14, r3
-
-
-send_AT_CIPSEND_17:
-	movia r11, 0x41
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x54
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x2B
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x43
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x49
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x50
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x53
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x45
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11
-
-	movia r11, 0x4E
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x44
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x3D
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, Um
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x37
-	stwio r11, 0(r15)
-	custom 0, r2, r14, r11	
-
-	movia r11, 0x0D
-	stwio r11, 0(r15)
-
-	movia r11, 0x0A
-	stwio r11, 0(r15)	
-
-	addi r10, r0, 0
-	movia r11, 1000000
-	call delay
-	movia r3, clear # Limpa o display
-	custom 0, r2, r0, r3	
-
-	call read_from_uart
-	custom 0, r2, r14, r3
-
-
-# send_AT_CIPSEND_15:
-# 	movia r11, 0x41
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	movia r11, 0x54
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	movia r11, 0x2B
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	movia r11, 0x43
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x49
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	movia r11, 0x50
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x53
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x45
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	movia r11, 0x4E
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x44
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x3D
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, Um
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x35
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x0D
-# 	stwio r11, 0(r15)
-
-# 	movia r11, 0x0A
-# 	stwio r11, 0(r15)	
-
-# 	addi r10, r0, 0
-# 	movia r11, 1000000
-# 	call delay
-# 	movia r3, clear # Limpa o display
-# 	custom 0, r2, r0, r3	
-
-# 	call read_from_uart
-# 	custom 0, r2, r14, r3
-
-
-# init_mqtt:
-# 	# movia r3, clear # Limpa o display
-# 	# custom 0, r2, r0, r3
-# 	# FIDEX HEADER
-# 	movia r11, 0x10 # CONNECT
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x0F # REMAING LENGTH
-# 	# VARIABLE HEADER
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x00 # MSB
-# 	stwio r11, 0(r15)	
-# 	movia r11, 0x04 # LSB
-# 	stwio r11, 0(r15)	
-# 	movia r11, 0x4D # M
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x51 # Q
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x54 # T
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x54 # T
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x04 # PROTOCOL LEVEL
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x02 # FLAGS
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x00 # KEEP ALIVE MSB
-# 	stwio r11, 0(r15)	
-# 	movia r11, 0x0A # KEEP ALIVE LSB
-# 	stwio r11, 0(r15)	
-# 	#PAYLOAD
-# 	movia r11, 0x00 #MSB
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x03 #LSB
-# 	stwio r11, 0(r15)	
-# 	movia r11, 0x47 #G
-# 	stwio r11, 0(r15)
-# 	movia r11, 0x50 #P
-# 	stwio r11, 0(r15)
-# 	# movia r3, clear # Limpa o display
-# 	# custom 0, r2, r0, r3
-# 	movia r11, 0x33 #3
-# 	stwio r11, 0(r15)
-
-# 	br led1
-
-
-# send_mqtt:
-# 	# movia r3, clear # Limpa o display
-# 	# custom 0, r2, r0, r3
-# 	movia r11, publish
-# 	stwio r11, 0(r15)
-# 	movia r11, remain_bytes
-# 	stwio r11, 0(r15)
-# 	movia r11, msb
-# 	stwio r11, 0(r15)
-# 	movia r11, lsb
-# 	stwio r11, 0(r15)
-
-# 	movia r11, S
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, D
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x54
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x6F
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x70
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x69
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, 0x63
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11	
-
-# 	movia r11, L
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-# 	movia r11, E
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-# 	movia r11, D
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-# 	add r11, r0, r4
-# 	stwio r11, 0(r15)
-# 	custom 0, r2, r14, r11
-
-# 	addi r10, r0, 0
-# 	movia r11, 1000000
-# 	call delay
-
-# 	ldw ra, 1(sp)
-# 	addi sp, sp, 8
-# 	ret 
-
-# loop_write_uart:
-# 	add r3, r7, r12
-# 	ldb r11, 0(r3)
-# 	# stbio r11, 0(r15)
-# 	call write_uart
-# 	addi r12, r12, 1
-# 	bgt r12, r10, loop_write_uart_next_destine
-# 	br loop_write_uart	
-
-# loop_write_uart_end:
-# 	add r3, r7, r12
-# 	ldb r11, 0(r3)
-# 	call write_uart	
-# 	addi r12, r12, 1
-# 	bgt r12, r10, loop_write_uart_next_destine_end
-# 	br loop_write_uart_end
-
-# loop_write_uart_end2:
-# 	add r3, r7, r12
-# 	ldb r11, 0(r3)
-# 	call write_uart	
-# 	addi r12, r12, 1
-# 	bgt r12, r10, loop_write_uart_next_destine_end2
-# 	br loop_write_uart_end2
-
-# loop_write_uart_next_destine:
-# 	callr r8
-
-# loop_write_uart_next_destine_end:
-# 	movia r11, aspas
-# 	call write_uart
-# 	call end_command
-# 	callr r8
-
-# loop_write_uart_next_destine_end2:
-# 	call end_command
-# 	callr r8
-
-# end_command:
-
-# 	subi sp, sp, 8
-# 	stw ra, 1(sp)
-
-# 	movia r11, treze
-# 	call write_uart	
-# 	movia r11, dez
-# 	call write_uart	
-
-# 	addi r10, r0, 0
-# 	movia r11, 1200
-# 	call delay
-
-# 	call read_from_uart
-# 	custom 0, r2, r14, r3
-
-# 	addi r10, r0, 0
-# 	movia r11, 2000000
-# 	call delay
-
-# 	movia r3, clear # Limpa o display
-# 	custom 0, r2, r0, r3
-
-# 	# call clear_uart
-
-# 	ldw ra, 1(sp)
-# 	addi sp, sp, 8
-# 	ret
+	# call clear_uart
+
+	ldw ra, 1(sp)
+	addi sp, sp, 8
+	ret
 
 read_from_uart:
 	ldwio r3, 0(r15)
@@ -1087,9 +886,9 @@ frase_selection1:
 	custom 0, r2, r14, r3
 	movia r3, Um
 	custom 0, r2, r14, r3
-	
-	# call send_mqtt
 
+	call send_at7
+	
 	nextpc r8
 	ldbuio r3, 0(r5)
 	beq r3, r14, led1
@@ -1133,7 +932,7 @@ frase_selection2:
 	movia r3, Dois
 	custom 0, r2, r14, r3
 
-	# call send_mqtt
+	call send_at7
 	
 	nextpc r8
 	ldbuio r3, 0(r5)
@@ -1177,9 +976,9 @@ frase_selection3:
 	custom 0, r2, r14, r3
 	movia r3, Tres
 	custom 0, r2, r14, r3
-	
-	# call send_mqtt
 
+	call send_at7
+	
 	nextpc r8
 	ldbuio r3, 0(r5)
 	beq r3, r14, led3
@@ -1223,8 +1022,8 @@ frase_selection4:
 	movia r3, Quatro
 	custom 0, r2, r14, r3
 
-	# call send_mqtt
-
+	call send_at7
+	
 	nextpc r8
 	ldbuio r3, 0(r5)
 	beq r3, r14, led4
@@ -1267,9 +1066,9 @@ frase_selection5:
 	custom 0, r2, r14, r3
 	movia r3, Cinco
 	custom 0, r2, r14, r3
-	
-	# call send_mqtt
 
+	call send_at7
+	
 	nextpc r8
 	ldbuio r3, 0(r5)
 	beq r3, r14, led5

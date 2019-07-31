@@ -1,5 +1,5 @@
 Fitter report for microarquiteturaGp3
-Thu Jul 25 15:50:12 2019
+Tue Jul 30 14:41:00 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -72,7 +72,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Thu Jul 25 15:50:11 2019           ;
+; Fitter Status                      ; Successful - Tue Jul 30 14:41:00 2019           ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; microarquiteturaGp3                             ;
 ; Top-level Entity Name              ; microarquiteturaGp3                             ;
@@ -159,12 +159,12 @@ applicable agreement for further details.
 ; Number detected on machine ; 2           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.22        ;
+; Average used               ; 1.16        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  22.2%      ;
+;     Processor 2            ;  15.5%      ;
 +----------------------------+-------------+
 
 
@@ -257,7 +257,7 @@ applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in /home/aluno/Documentos/microarquiteturaGp3/output_files/microarquiteturaGp3.pin.
+The pin-out file can be found in /home/aluno/Documentos/microarquitetura-IoT/output_files/microarquiteturaGp3.pin.
 
 
 +--------------------------------------------------------------------------+
@@ -2940,7 +2940,7 @@ Info (176353): Automatically promoted node altera_reset_controller:rst_controlle
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176218): Packed 8 registers into blocks of type EC
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:12
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:14
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:03
 Info (170191): Fitter placement operations beginning
@@ -2953,23 +2953,23 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:06
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 2.31 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 2.35 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:08
-Info (144001): Generated suppressed messages file /home/aluno/Documentos/microarquiteturaGp3/output_files/microarquiteturaGp3.fit.smsg
+Info (144001): Generated suppressed messages file /home/aluno/Documentos/microarquitetura-IoT/output_files/microarquiteturaGp3.fit.smsg
 Info: Quartus II 32-bit Fitter was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 608 megabytes
-    Info: Processing ended: Thu Jul 25 15:50:15 2019
-    Info: Elapsed time: 00:00:59
-    Info: Total CPU time (on all processors): 00:01:06
+    Info: Peak virtual memory: 605 megabytes
+    Info: Processing ended: Tue Jul 30 14:41:03 2019
+    Info: Elapsed time: 00:01:03
+    Info: Total CPU time (on all processors): 00:01:07
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in /home/aluno/Documentos/microarquiteturaGp3/output_files/microarquiteturaGp3.fit.smsg.
+The suppressed messages can be found in /home/aluno/Documentos/microarquitetura-IoT/output_files/microarquiteturaGp3.fit.smsg.
 
 
